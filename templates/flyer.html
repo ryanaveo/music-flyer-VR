@@ -3,32 +3,68 @@
     <head>
         <meta charset="utf-8">
 		<title>Music Flyer</title>
-		<link rel="stylesheet" href="../static/css/flyer.css">
+		<link rel="stylesheet" type="text/css" href="../static/css/flyer.css">
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+        <script src="../static/js/href.js"></script>
 
     </head>
 
 
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   <script src="../static/js/flyer.js"></script>
 
-    <body style="background-color:antiquewhite">
-        <header style="background-color:antiquewhite;">
+    <body>
+
+        <a-scene embedded>
+            <a-assets>
+                <img id="artist" src="{{artistImg}}"/>
+                <img id="ig" src="../static/img/ig.jpg"/>
+                <img id="fb" src="../static/img/fb.jpg"/>
+            </a-assets>
+
+            <a-camera>
+                <a-cursor id="cursor">
+                  <a-animation begin="click" easing="ease-in" attribute="scale"
+                               fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
+                  <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale"
+                               from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-animation>
+                </a-cursor>
+            </a-camera>
+
+            <a-box id="ig-box" src="#ig" width="1" height="1" depth="1"
+                        position="-2 0 -3"
+                        scale="0.5 1 1"
+                        href="{{artistInsta}}">
+            </a-box>
+            <a-box id="fb-box" src="#fb" width="1" height="1" depth="1"
+                        position="2 0 -3"
+                        scale="0.5 1 1"
+                        href="{{artistFb}}">
+            </a-box>
+            <a-curvedimage src="#artist"
+                     height="12" radius="5.7" theta-length="180" rotation="0 100 0"
+                    position="0 2 -5">
+            </a-curvedimage>
+
+        </a-scene>
+
+        <!-- <header style="background-color:antiquewhite;">
             <div class="row">
                 <div class="col-8">
                     <h1 style="font-size:80px;font-family:Arvo"> <strong>{{yourArtist}} </strong> </h1>
                 </div>
                 <div class="col-4">
-                    <img src="{{artistImg}}">
+                     <img src="{{artistImg}}">
                 </div>
             </div>
 
-        </header>
+        </header> -->
 
 
         <!-- Spotify Web Player and Bio -->
@@ -43,11 +79,11 @@
 
     </div>
 
-    <div class="contact" style="background-color:antiquewhite;margin:0;padding:0">
-        <h2 style="font-size:36px;font-family:Arvo"> Contact Me </h2>
+    <!-- <div class="contact" style="margin:0;padding:0">
+        <h2 style="font-size:36px;font-family:Arvo"> Contact </h2>
         <h2 style="font-size:20px;font-family:Arvo"> <a href="{{artistInsta}}"> Instagram </a> <br> </h2>
         <h2 style="font-size:20px;font-family:Arvo"> <a href="{{artistFb}}"> Facebook </a> <br> </h2>
-    </div>
+    </div> -->
 
 <!-- Related Artists -->
         <h2 style="font-size:36px;font-family:Arvo">Related Artists</h2>
