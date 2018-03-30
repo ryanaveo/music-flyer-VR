@@ -9,7 +9,7 @@ body {
 }
 
 header {
-    height: 300px;
+    height: 150px;
     width: 100%;
 }
 
@@ -20,7 +20,7 @@ header img {
 }
 
 h1 {
-    float: left;
+    text-align: center;
     font-family: Arvo;
     font-size: 100px;
     color: black;
@@ -55,10 +55,6 @@ h1 {
     width: 60%;
     height: 100%;
     background-color: red;
-}
-
-.contact{
-
 }
 
 .spotify-player,

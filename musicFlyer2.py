@@ -34,6 +34,7 @@ class search:
         requestArtist = requests.get(searchUrl, params=searchParams, headers=headers)
 
         jsonArtist = requestArtist.json()
+        #print jsonArtist
         self.artist = jsonArtist
         self.artistUrl = jsonArtist["artists"]["items"][0]["external_urls"]["spotify"]
         self.artistImage = jsonArtist["artists"]["items"][0]["images"][0]["url"]
@@ -49,7 +50,7 @@ class search:
         requestArtistInfo = requests.get(searchUrl, headers=headers)
         jsonArtist = requestArtistInfo.json()
         self.artistEmbed = self.addEmbedtoUrl(jsonArtist["external_urls"]["spotify"])
-        print(self.artistEmbed)
+        #print(self.artistEmbed)
 
     def searchArtistTopTracks(self):
         tracksUrl = 'https://api.spotify.com/v1/artists/' + self.artistId + '/top-tracks'
@@ -68,7 +69,7 @@ class search:
         headers = {"Authorization": "Bearer " + self.accessToken}
         requestArtistTopTracks = requests.get(artistsUrl, params=artistParams, headers=headers)
         jsonArtist = requestArtistTopTracks.json()
-        print(jsonArtist)
+        #print(jsonArtist)
 
         # Loops through the json object for related artists to get three artists' info
         for i in range(0, 3):
@@ -107,12 +108,12 @@ class search:
         return self.artistEmbed
 
 
-if __name__ == "__main__":
-    searched = search()
-    searched.getAccessToken()
-    searched.searchArtist("khalid")
-    searched.searchArtistTopTracks()
-    searched.searchArtistEmbed()
-    # print(searched.getArtistImage())
-    #  print(searched.getArtistId())
-    # print(searched.getSongNames())
+# if __name__ == "__main__":
+#     searched = search()
+#     searched.getAccessToken()
+#     searched.searchArtist("khalid")
+#     searched.searchArtistTopTracks()
+#     searched.searchArtistEmbed()
+#     print(searched.getArtistImage())
+#     print(searched.getArtistId())
+#     print(searched.getSongNames())
