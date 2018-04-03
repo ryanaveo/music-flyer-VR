@@ -4,7 +4,7 @@
 
 ## Quickstart (temporary):
 
-# Download requests library here: http://docs.python-requests.org/en/master/user/install/
+### Download requests library here: http://docs.python-requests.org/en/master/user/install/
 
 1. Download repo
 2. Navigate to project's folder on command line
