@@ -43,8 +43,6 @@ def index():
             artistTopSongs=SpotifyCreator.getArtistEmbed()
             artistRelated=SpotifyCreator.getRelatedArtists()
 
-            print(artistRelated)
-
             blurb, artistFb, artistTwitter, artistInsta, artistImgNone, artistDescription = GeniusCreator.getArtistInfo(
                 artistName)
             addToLists(artistInsta)
@@ -66,7 +64,15 @@ def index():
 @app.route("/artists")
 def artists():
     global artistName,artistImg,artistSongs,artistTopSongs,artistDescription,errorText,blurbs
-    return render_template("flyer.html",yourArtist=artistName,artistImg=artistImg,artistSongs=artistSongs,artistTopSongs=artistTopSongs,artistInsta=blurbs[0],artistFb=blurbs[1],blurb=blurbs[2],relatedArtists=blurbs[3])
+    return render_template("flyer.html",
+    yourArtist=artistName,
+    artistImg=artistImg,
+    artistSongs=artistSongs,
+    artistTopSongs=artistTopSongs,
+    artistInsta=blurbs[0],
+    artistFb=blurbs[1],
+    blurb=blurbs[2],
+    relatedArtists=blurbs[3])
 
 
 #Method that appends items to a list since the list will later be used to provide info on a webpage

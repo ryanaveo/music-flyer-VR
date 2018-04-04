@@ -80,6 +80,13 @@ class search:
             self.relatedArtists[jsonArtist["artists"][i]["name"]] = artistInfo
             artistInfo = []
 
+    def getAlbums(self):
+        albumUrl = 'https://api.spotify.com/v1/artists/' + self.artistId + '/albums'
+        albumParams = {'include_groups': 'album', 'country': 'US', 'limit': '5'}
+        headers = {"Authorization": "Bearer " + self.accessToken}
+        requestAlbums = requests.get(albumUrl, params=albumParams, headers=headers)
+        jsonAlbum = requestAlbums.json()
+        print(jsonAlbum)
 
     def getRelatedArtists(self):
         return self.relatedArtists
@@ -108,10 +115,11 @@ class search:
         return self.artistEmbed
 
 
-# if __name__ == "__main__":
-#     searched = search()
-#     searched.getAccessToken()
-#     searched.searchArtist("khalid")
+if __name__ == "__main__":
+     searched = search()
+     searched.getAccessToken()
+     searched.searchArtist("khalid")
+     searched.getAlbums()
 #     searched.searchArtistTopTracks()
 #     searched.searchArtistEmbed()
 #     print(searched.getArtistImage())
